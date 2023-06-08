@@ -43,9 +43,13 @@ class Game {
         obstacle.element.remove();
         this.obstacles.splice(i, 1);
         this.lives--;
+        let lives = document.querySelector('#lives');
+        lives.innerHTML = `${this.lives}`;
         i--;
       } else if (obstacle.top > this.height) {
         this.score++;
+        let score = document.querySelector('#score');
+        score.innerHTML = `${this.score}`;
         obstacle.element.remove();
         this.obstacles.splice(i, 1);
         i--;

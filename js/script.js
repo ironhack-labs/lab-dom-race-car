@@ -1,7 +1,7 @@
 window.onload = function () {
   const startButton = document.getElementById("start-button");
   const restartButton = document.getElementById("restart-button");
-
+  // comments to be removed
   startButton.addEventListener("click", function () {
     startGame();
   });

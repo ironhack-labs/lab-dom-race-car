@@ -67,17 +67,24 @@ class Game {
 
   update() {
     //Bonus: Add scores and lives
-    let score = document.getElementById("scores");
+    let score = document.getElementById("score");
     let lives = document.getElementById("lives");
 
-    /*  score.innerHTML = this.score;
-    lives.innerHTML = this.lives; */
+    score.innerHTML = this.score;
+    lives.innerHTML = this.lives;
+
+    if (this.lives === 0) {
+      this.endGame();
+    }
 
     // Move the car
     this.player.move();
 
     // Check for collision and if an obstacle is still on screen
     for (let i = 0; i < this.obstacles.length; i++) {
+      // Move the obstacle
+      const obstacle = this.obstacles[i];
+      obstacle.move();
       // Check if a player collided with an object
       if (this.player.didCollide(obstacle)) {
         // Remove the obstacle from the Dom
@@ -85,25 +92,20 @@ class Game {
         // Remove the obstacle from thhe Array
         this.obstacles.splice(i, 1);
         //Redduce player's lives b 1
-        this.lives --;
-
+        this.lives--;
       }
       // Check if the obstacle is still on screen
       else if (obstacle.top > this.height) {
-          // Congratulations to you, you avoided an obstacle
-          score++;
-          // Remove the obstacle from the DOM
-          
-          obstacle.element.remove();
-          // Remove the obstacle from the array
-          this.obstacles.splice(i, 1);
-        }
+        // Congratulations to you, you avoided an obstacle
+        this.score++;
+        // Remove the obstacle from the DOM
+
+        obstacle.element.remove();
+        // Remove the obstacle from the array
+        this.obstacles.splice(i, 1);
+      }
     }
-    
-    // Move the obstacle
-    const obstacle = this.obstacles[i];
-    obstacle.move();
-    
+
     // Update Obstacles
     if (!this.obstacles.length && !this.pushingObstacle) {
       this.pushingObstacle = true;
@@ -112,5 +114,22 @@ class Game {
         this.pushingObstacle = false;
       }, 500);
     }
+  }
+
+  endGame() {
+    // Remove the player
+    this.player.element.remove();
+    // Remove all obstacles
+    this.obstacles.forEach((obstacle) => {
+      obstacle.element.remove();
+    });
+    // End the game
+    this.gameIsOver = true;
+    // Hide the game screen
+    this.gameScreen.style.display = "none";
+    // Show end game screen
+    this.gameEndScreen.style.display = "block";
+    // Clear the obstacle array
+    this.obstacles = [];
   }
 }

@@ -36,10 +36,10 @@ window.onload = function () {
             game.player.directionX = 1;
             break;
           case "ArrowUp":
-            game.player.directionY = -1;
+            game.player.directionY = -2;
             break;
           case "ArrowDown":
-            game.player.directionY = 1;
+            game.player.directionY = 1.5;
             break;
         }
       }

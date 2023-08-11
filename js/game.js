@@ -2,15 +2,19 @@ class Game
 {
     constructor()
     {
+        this.livesLabel = document.querySelector("#lives");
+        this.scoreLabel = document.querySelector("#score");
         this.startScreen = document.querySelector("#game-intro");
         this.gameScreen = document.querySelector("#game-screen");
         this.gameEndScreen = document.querySelector("#game-end");
-        this.height = 500;
+        this.height = 600;
         this.width = 500;
         this.obstacles = [];
         this.score = 0;
         this.lives = 3;
         this.gameIsOver = false;
+        this.livesLabel.textContent = this.lives;
+        this.scoreLabel.textContent = this.score;
 
         this.player = new Player(this.gameScreen, 200, 500, 100, 150, "./images/car.png");
     }
@@ -49,11 +53,14 @@ class Game
             let obstacle = this.obstacles[i];
             obstacle.move();
 
+
             if(this.player.didCollide(obstacle))
             {
                 obstacle.element.remove();
                 this.obstacles.splice(i, 1);
                 this.lives--;
+
+                this.livesLabel.textContent = this.lives;
                 i--;
             }
 
@@ -62,6 +69,8 @@ class Game
                 obstacle.element.remove();
                 this.obstacles.splice(i, 1);
                 this.score++;
+
+                this.scoreLabel.textContent = this.score;
                 i--;
             }
         }
@@ -69,5 +78,12 @@ class Game
         if(this.lives === 0) this.endGame();
     }
 
-    endGame(){}
+    endGame()
+    {
+        this.player.element.remove();
+
+        this.gameIsOver = true;
+        this.gameEndScreen.style.display = "block";
+        this.gameScreen.style.display = "none";
+    }
 }

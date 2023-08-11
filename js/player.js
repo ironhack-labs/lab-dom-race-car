@@ -53,9 +53,16 @@ class Player
         const obstaclePosition = obstacles.element.getBoundingClientRect();
         const playerPosition = this.element.getBoundingClientRect();
 
-        playerPosition.left < obstaclePosition.right &&
+        if(playerPosition.left < obstaclePosition.right &&
         playerPosition.right > obstaclePosition.left &&
         playerPosition.top < obstaclePosition.bottom &&
-        playerPosition.bottom > obstaclePosition.top ? true : false
+        playerPosition.bottom > obstaclePosition.top)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

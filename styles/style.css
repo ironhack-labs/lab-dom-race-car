@@ -65,3 +65,20 @@ body button {
   border-radius: 5px;
   margin-bottom: 20px;
 }
+
+.stats{
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+  z-index: 2;
+}
+
+h2{
+  margin-top: 16px;
+}
+
+.stats > p{
+  font-size: 20px;
+}

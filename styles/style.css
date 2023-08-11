@@ -1,6 +1,7 @@
 body {
   padding: 0;
   text-align: center;
+  overflow: hidden;
 }
 
 #game-intro {
@@ -63,4 +64,21 @@ body button {
   box-shadow: 0;
   border-radius: 5px;
   margin-bottom: 20px;
+}
+
+.stats{
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+  z-index: 2;
+}
+
+h2{
+  margin-top: 16px;
+}
+
+.stats > p{
+  font-size: 20px;
 }

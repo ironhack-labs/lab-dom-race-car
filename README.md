@@ -139,7 +139,7 @@ In this iteration, you will create the `Game` class in the `js/game.js` file. Th
    - Invokes the `update()` method to update the game state. We will create a `update` method in the following iteration.
 
    - To ensure that the game loop function runs repeatedly, it should invoke itself (like `this.gameLoop()`), to create a recursive loop.
-     To ensure a consistent frame rate, use `window.requestAnimationFrame()` to execute the function.
+     To ensure a consistent frame rate, use `window.requestAnimationFrame()` to execute the function. // check the article! 
 
    </details>
 

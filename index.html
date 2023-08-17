@@ -10,6 +10,7 @@
   <body>
     <main>
       <!-- #game-intro is initially shown on the game start screen -->
+      <!-- block 1-->
       <div id="game-intro">
         <img src="./images/logo.png" alt="" class="logo-img" />
         <br />
@@ -17,7 +18,7 @@
         <p>Use the left and right arrow to control the car!</p>
         <img src="./images/arrows.png" alt="" class="arrows-img" />
       </div>
-
+      <!-- block 2-->
       <div id="game-container">
         <div>
           <h2>Stats</h2>
@@ -29,6 +30,7 @@
       </div>
 
       <!-- #game-end is initially hidden using CSS style display: none -->
+      <!-- block 3-->
       <div id="game-end">
         <img src="./images/logo.png" alt="" class="logo-img" />
         <h1>Game Over</h1>
@@ -36,7 +38,9 @@
         <button id="restart-button">Restart</button>
       </div>
     </main>
-
+    <!-- player use the obstacle so, it should be TOP -->
+    <script type="text/javascript" src="js/obstacle.js"></script> 
+    <script type="text/javascript" src="js/player.js"></script>
     <script type="text/javascript" src="js/game.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
   </body>

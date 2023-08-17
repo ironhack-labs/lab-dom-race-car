@@ -5,6 +5,9 @@ class Game {
         this.startScreen = document.querySelector("#game-intro"); //holds the div element #game-intro. To access the element, use either document.getElementById() or document.querySelector().
         this.gameScreen = document.querySelector("#game-screen");
         this.gameEndScreen = document.querySelector("#game-end");
+        this.displayScore = document.querySelector("#score");
+        this.displayLives = document.querySelector("#lives");
+
         this.player = new Player(
             this.gameScreen,
             200,
@@ -53,12 +56,14 @@ class Game {
 
             if (obstacle.top > this.height) {
                 this.score++;
+                this.displayScore.textContent = this.score;
                 obstacle.element.remove();
                 this.obstacles.splice(0, 1);
             }
 
             if (this.obstacles.length && this.player.didCollide(obstacle)) {
                 this.lives--;
+                this.displayLives.textContent = this.lives;
                 console.log(this.lives);
                 obstacle.element.remove();
                 this.obstacles.splice(0, 1);

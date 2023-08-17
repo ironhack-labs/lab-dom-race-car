@@ -17,6 +17,8 @@ class Game {
     this.obstacles = [];
     this.score = 0;
     this.lives = 3;
+    this.scoreElement = document.querySelector("#score"); //added for score & lives
+    this.livesElement = document.querySelector("#lives"); //added for score & lives
     this.gameIsOver = false;
   }
 
@@ -54,9 +56,9 @@ class Game {
       // avoid colision
       if (obstacle.top > this.height) {
         this.score++;
-
+        console.log("score:", this.score);
         obstacle.element.remove();
-        this.obstacle.splice(0, 1);
+        this.obstacles.splice(0, 1);
       }
 
       if (this.obstacles.length && this.player.didColide(obstacle)) {
@@ -67,9 +69,18 @@ class Game {
       }
     }
 
+    // Update the display of score and lives
+    this.updateScoreAndLives();
+
     if (this.lives <= 0) {
       this.endGame();
     }
+  }
+
+  // Added for score & lives tracking
+  updateScoreAndLives() {
+    this.scoreElement.textContent = this.score;
+    this.livesElement.textContent = this.lives;
   }
 
   endGame() {

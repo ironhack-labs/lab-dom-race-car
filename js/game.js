@@ -11,7 +11,7 @@ class Game {
             500,
             100,
             150,
-            "../images/car.png"
+            "./images/car.png"
           );
         this.height = 600;
         this.width = 500;
@@ -42,7 +42,7 @@ update() {
     console.log("update");
     this.player.move();
     if(Math.random() > 0.98 && this.obstacles.length < 1) {
-        this.obstacles.push(new Obstacle(this.gameScreen, "../images/redCar.png"));
+        this.obstacles.push(new Obstacle(this.gameScreen, "./images/redCar.png"));
     }
 
     if(this.obstacles.length) {

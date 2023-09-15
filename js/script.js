@@ -23,7 +23,7 @@ window.onload = function () {
     game.start();
   }
 
-  document.onkeydown = function (event) {
+  window.addEventListener("keydown", function (event) {
     let direction = event.key;
     let possibleMove = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"];
     console.log(`user pressed ${direction}`);
@@ -49,5 +49,5 @@ window.onload = function () {
           break;
       }
     }
-  };
+  });
 };

@@ -19,8 +19,8 @@ class Player {
   }
 
   move() {
-    this.directionX += this.left;
-    this.directionY += this.right;
+    this.left += this.directionX;
+    this.top += this.directionY;
 
     if (this.left < 10) {
       this.left = 10;
@@ -54,15 +54,11 @@ class Player {
       player1.left < obs.right &&
       player1.right > obs.left &&
       player1.top < obs.bottom &&
-      player1.bottom > obstacle.top
+      player1.bottom > obs.top
     ) {
       return true;
     } else {
       return false;
     }
-  }
-
-  update() {
-    this.player.move();
   }
 }

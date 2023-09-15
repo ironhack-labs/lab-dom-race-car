@@ -30,7 +30,7 @@ class Game {
   }
 
   gameLoop() {
-    console.log("in the game loop");
+    // console.log("in the game loop");
 
     if (this.gameIsOver) {
       return true;
@@ -42,7 +42,7 @@ class Game {
   }
 
   update() {
-    console.log("in the update");
+    // console.log("in the update");
 
     this.player.move();
 
@@ -57,13 +57,16 @@ class Game {
         this.lives -= 1;
 
         i--;
-      } else if (this.top > this.height) {
+      } else if (obs.top > this.height) {
         this.score += 1;
         obs.element.remove();
         this.obstacles.splice(i, 1);
         i--;
       }
     }
+
+    document.getElementById("score").innerHTML = this.score;
+    document.getElementById("lives").innerHTML = this.lives;
 
     if (this.lives === 0) {
       this.endGame();
@@ -79,7 +82,7 @@ class Game {
     this.obstacles.forEach((obstacle) => obstacle.element.remove());
 
     this.gameIsOver = true;
-    this.startScreen.style.display = "none";
+    this.gameScreen.style.display = "none";
     this.gameEndScreen.style.display = "block";
   }
 }

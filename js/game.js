@@ -65,6 +65,7 @@ class Game {
       }
     }
 
+    // Bonus iteration 10;
     document.getElementById("score").innerHTML = this.score;
     document.getElementById("lives").innerHTML = this.lives;
 

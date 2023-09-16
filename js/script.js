@@ -23,7 +23,10 @@ window.onload = function () {
     game.start();
   }
 
-  window.addEventListener("keydown", function (event) {
+  document.onkeydown = (event) => {
+    //This is alternative way to bind event.
+    // window.addEventListener("keydown", function (event) {
+
     let direction = event.key;
     let possibleMove = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"];
     console.log(`user pressed ${direction}`);
@@ -49,5 +52,5 @@ window.onload = function () {
           break;
       }
     }
-  });
+  };
 };

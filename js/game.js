@@ -77,14 +77,4 @@ class Game {
         this.gameScreen.style.display = "none";
         this.gameEndScreen.style.display = "block";
     }
-    reset() {
-        this.obstacles = [];
-        this.player.left = 200;
-        this.player.top = 500;
-        this.score = 0;
-        this.lives = 3;
-        this.gameEndScreen.style.display = "none";
-        this.gameOver = false;
-        this.gameLoop();
-    };
 };

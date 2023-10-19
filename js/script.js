@@ -78,7 +78,10 @@ window.onload = function () {
   window.addEventListener("keyup", handleKeyup);
 
   restartButton.addEventListener("click", function(){
-    resetGame();
-    startGame();
+    restartGame();
   });
+  function restartGame(){
+    location.reload();
+  }
+
 };

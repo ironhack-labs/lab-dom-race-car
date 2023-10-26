@@ -6,7 +6,7 @@ class Game {
         this.player = new Player(
             this.gameScreen,
             200,
-            500,
+            475,
             100,
             150,
             "./images/car.png"
@@ -24,6 +24,7 @@ class Game {
         this.gameScreen.style.width = `${this.width}px`;
         this.gameScreen.style.display = "block";
         this.startScreen.style.display = "none";
+        this.gameEndScreen.style.display = "none";
         this.gameLoop();
     }
 
@@ -75,6 +76,7 @@ class Game {
     endGame() {
         this.gameIsOver = true;
         this.player.element.remove();
+        this.obstacle[0].element.remove();
         this.gameEndScreen.style.display = "block";
         this.gameScreen.style.display = "none";
     }

@@ -2,14 +2,14 @@ window.onload = function () {
   const startButton = document.getElementById("start-button");
   const restartButton = document.getElementById("restart-button");
 
-  const game = new Game();
+  let game = new Game();
   
-  startButton.addEventListener("click", function () {
-    startGame();
-  });
+  startButton.addEventListener("click", startGame);
 
-  restartButton.addEventListener("click", function () {
-    restartGame();
+  restartButton.addEventListener("click", () => {
+    console.log("restart button clicked");
+    game = new Game();
+    startGame();
   });
 
 

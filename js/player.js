@@ -12,10 +12,10 @@ class Player {
     this.element.src = imgSrc;
     this.element.style.position = "absolute";
     // Set up the default element's property values
-    this.element.style.width = `${width}px`;
-    this.element.style.height = `${height}px`;
-    this.element.style.left = `${left}px`;
-    this.element.style.top = `${top}px`;
+    this.element.style.width = `${this.width}px`;
+    this.element.style.height = `${this.height}px`;
+    this.element.style.left = `${this.left}px`;
+    this.element.style.top = `${this.top}px`;
     this.gameScreen.appendChild(this.element);
     //this.element1 = document.createElement("img")
     //this.element1.src = imgSrc1;

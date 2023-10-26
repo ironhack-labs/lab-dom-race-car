@@ -8,9 +8,15 @@ window.onload = function () {
     startGame(); //hoisting
     game.start();
   });
+  restartButton.addEventListener("click", function () {
+    restartGame(); //hoisting
+  });
 
   function startGame() {
     console.log("start game");
+  }
+  function restartGame() {
+    location.reload();
   }
 
   function handleKeydown(event) {

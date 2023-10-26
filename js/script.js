@@ -3,10 +3,15 @@ window.onload = function () {
   const restartButton = document.getElementById("restart-button");
 
   const game = new Game();
-
+  
   startButton.addEventListener("click", function () {
     startGame();
   });
+
+  restartButton.addEventListener("click", function () {
+    restartGame();
+  });
+
 
 
   function handleKeydown(event) {

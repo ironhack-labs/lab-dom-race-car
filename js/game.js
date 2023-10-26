@@ -45,14 +45,13 @@ class Game {
         console.log("update");
         this.player.move();
         this.obstacle[0].move();
-        const gameState = this.player.didCollide(this.obstacle[0]);
-
         
         if(this.player.didCollide(this.obstacle[0])) {
             this.lives -= 1;
             this.obstacle[0].element.remove();
             this.obstacle =[];
             this.obstacle.push(new Obstacle(this.gameScreen));
+            document.querySelector("#lives").innerHTML = `${this.lives}`
         }
         
         if(this.obstacle[0].top > this.height) {
@@ -62,6 +61,8 @@ class Game {
             this.obstacle[0].element.remove();
             this.obstacle =[];
             this.obstacle.push(new Obstacle(this.gameScreen));
+            this.score += 100;
+            document.querySelector("#score").innerHTML = `${this.score}`
             }
         }
 

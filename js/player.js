@@ -50,7 +50,7 @@ class Player {
 
     didCollide(obstacle) {
         const playerRect = this.element.getBoundingClientRect();
-        const obstacleRect = this.element.getBoundingClientRect();
+        const obstacleRect = obstacle.element.getBoundingClientRect();
 
         if (
             playerRect.left < obstacleRect.right &&

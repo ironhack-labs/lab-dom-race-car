@@ -24,7 +24,6 @@ class Game {
     start() {
         this.gameScreen.style.height = `${this.height}px`;
         this.gameScreen.style.width = `${this.width}px`;
-        this.gameScreen.position = "relative";
         this.startScreen.style.display = 'none';
         this.gameScreen.style.display = 'block';
 

@@ -12,7 +12,7 @@ class Game {
             150,
             "./images/car.png" 
             );
-        this.heigth = 600;
+        this.height = 600;
         this.width  = 500;
         this.obstacles = [];
         this.score = 0;
@@ -21,7 +21,7 @@ class Game {
     }
 
     start(){
-        this.gameScreen.style.height = `${this.heigth}px`;
+        this.gameScreen.style.height = `${this.height}px`;
         this.gameScreen.style.width = `${this.width}px`;
 
         this.startScreen.style.display = "none";
@@ -52,11 +52,13 @@ class Game {
                 obstacle.element.remove();
                 this.obstacles.splice(i,1);
                 this.lives--;
+                document.querySelector('#lives').innerHTML = this.lives;
                 i--;
             } else if (obstacle.top > this.height){
                 this.score++;
                 obstacle.element.remove();
                 this.obstacles.splice(i,1);
+                document.querySelector('#score').innerHTML = this.score;
                 i--;
             }
         }
@@ -77,4 +79,7 @@ class Game {
         this.gameScreen.style.display = "none";
         this.gameEndScreen.style.display = "block";
     }
+
 }
+
+

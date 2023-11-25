@@ -1,10 +1,17 @@
 class Game {
     // code to be added
-    constructor (startScreen, gameScreen, gameEndScreen, player, height, width, obstacles, score, lives, gameIsOver){
+    constructor () {
         this.startScreen = document.querySelector("#game-intro");
         this.gameScreen = document.querySelector("#game-screen");
         this.gameEndScreen = document.querySelector("#game-end");
-        this.player = null;
+        this.player = new Player (
+            this.gameScreen,
+            200,
+            500,
+            100,
+            150,
+            "./images/car.png" 
+            ) ;
         this.heigth = "600px";
         this.width  = "500px";
         this.obstacles = [];
@@ -35,6 +42,7 @@ class Game {
     }
 
     update(){
+        this.player.move();
         
     }
 }

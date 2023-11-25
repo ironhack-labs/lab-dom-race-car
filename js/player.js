@@ -2,36 +2,43 @@ class Player {
   constructor(gameScreen, left, top, width, height,imgSrc){
     this.gameScreen = gameScreen;
     this.left = left;
-    this.top = width;
+    this.top = top;
     this.height = height;
+    this.width = width;
     this.directionX = 0;
     this.directionY = 0;
     this.element = document.createElement('img');
+   
     this.element.src = imgSrc; 
     this.element.style.position = 'absolute';
     this.element.style.width = `${this.width}px`;
     this.element.style.left = `${this.left}px`;
     this.element.style.top = `${this.top}px`;
     this.element.style.height = `${this.height}px`;
+
     this.gameScreen.appendChild(this.element);
-
-  
-
-
   }
 
   move(){
     this.left += this.directionX;
     this.top += this.directionY;
 
-  if(this.left > this.gameScreen.offsetWidth - this.width){
-    this.left = this.gameScreen.offsetWidth - this.width;
+  if (this.left < 25){
+    this.left = 25;
   }
 
-
-  if(this.top > this.gameScreen.offsetHeight- this.height){
-    this.top = this.gameScreen.offsetHeight - this.height;
+  if (this.top < 25){
+    this.top = 25;
   }
+
+  if(this.left > this.gameScreen.offsetWidth - this.width - 15){
+    this.left = this.gameScreen.offsetWidth - this.width - 15;
+  }
+
+  if(this.top > this.gameScreen.offsetHeight- this.height - 15){
+    this.top = this.gameScreen.offsetHeight - this.height - 15;
+  }
+
   this.updatePosition();
   }
 
@@ -41,8 +48,8 @@ class Player {
   }
 
   didCollide(obstacle){
-    let playerRect = this.element.getBoundingClientRect();
-    let obstacleRect = this.element.getBoundingClientRect();
+    const playerRect = this.element.getBoundingClientRect();
+    const obstacleRect = obstacle.element.getBoundingClientRect();
 
     if(playerRect.left < obstacleRect.right && 
       playerRect.right > obstacleRect.left &&
@@ -54,9 +61,5 @@ class Player {
       }else {
         return false; 
       }
-
-    
   }
-
-  
 }

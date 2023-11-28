@@ -2,7 +2,6 @@
 
 # LAB | DOM Race Car
 
-
 ![Island Racer Logo](images/logo.png)
 
 <details>
@@ -79,7 +78,7 @@ The start screen is already displayed on the page, as shown below.
 
 ![island racer game start screen](https://education-team-2020.s3.eu-west-1.amazonaws.com/web-dev/m1/lab-dom-race-car/lab-dom-race-car-start-screen.png)
 
-Upon clicking the **Start Game** button, the player should transition from the _start screen_ to the _game screen_, initiating the game. 
+Upon clicking the **Start Game** button, the player should transition from the _start screen_ to the _game screen_, initiating the game.
 
 In the next iteration, we will create the `Game` class and implement the functionality required to **start** the game.
 
@@ -161,9 +160,9 @@ You can use the below example of the completed code as a reference:
 ```js
 class Game {
   constructor() {
-    this.startScreen = document.getElementById("game-intro");
-    this.gameScreen = document.getElementById("game-screen");
-    this.gameEndScreen = document.getElementById("game-end");
+    this.startScreen = document.getElementById('game-intro');
+    this.gameScreen = document.getElementById('game-screen');
+    this.gameEndScreen = document.getElementById('game-end');
     this.player = null;
     this.height = 600;
     this.width = 500;
@@ -179,17 +178,17 @@ class Game {
     this.gameScreen.style.width = `${this.width}px`;
 
     // Hide the start screen
-    this.startScreen.style.display = "none";
-    
+    this.startScreen.style.display = 'none';
+
     // Show the game screen
-    this.gameScreen.style.display = "block";
+    this.gameScreen.style.display = 'block';
 
     // Start the game loop
     this.gameLoop();
   }
 
   gameLoop() {
-    console.log("in the game loop");
+    console.log('in the game loop');
 
     // Interrupt the function to stop the loop if "gameIsOver" is set to "true"
     if (this.gameIsOver) {
@@ -202,7 +201,7 @@ class Game {
   }
 
   update() {
-    console.log("in the update");
+    console.log('in the update');
   }
 }
 ```
@@ -226,16 +225,16 @@ Check the provided code in the `js/script.js` file. When the **Start Game** butt
 // js/script.js
 
 window.onload = function () {
-  const startButton = document.getElementById("start-button");
-  const restartButton = document.getElementById("restart-button");
+  const startButton = document.getElementById('start-button');
+  const restartButton = document.getElementById('restart-button');
   let game; // added
 
-  startButton.addEventListener("click", function () {
+  startButton.addEventListener('click', function () {
     startGame();
   });
 
   function startGame() {
-    console.log("start game");
+    console.log('start game');
     game = new Game(); // added
 
     game.start(); // added
@@ -278,11 +277,12 @@ In this iteration, we will create the `Player` class, representing the player's 
      - `1`: moving horizontally to the right
      - `-1`: moving horizontally to the left
    - `directionY` - initially set to 0. It is used to specify the **vertical** movement direction and can have the following values:
+
      - `0`: not moving vertically
      - `1`: moving vertically down
      - `-1`: moving vertically up
 
-   - `element` - the **image** element representing the car. This image element should be created in the constructor using the *provided image source (image url) passed as an argument* to the constructor.
+   - `element` - the **image** element representing the car. This image element should be created in the constructor using the _provided image source (image url) passed as an argument_ to the constructor.
 
    <br>
 
@@ -338,10 +338,10 @@ class Player {
     this.height = height;
     this.directionX = 0;
     this.directionY = 0;
-    this.element = document.createElement("img");
+    this.element = document.createElement('img');
 
     this.element.src = imgSrc;
-    this.element.style.position = "absolute";
+    this.element.style.position = 'absolute';
     // Set up the default element's property values
     this.element.style.width = `${width}px`;
     this.element.style.height = `${height}px`;
@@ -401,8 +401,6 @@ class Player {
       return false;
     }
   }
-
-
 }
 ```
 
@@ -414,7 +412,7 @@ class Player {
 
 ## Iteration 4: Add the Player to the Game
 
-1. As a reminder, we have already defined the `player` property of the `Game` class and set it to `null`. Now let's instantiate a new `Player` object and store it in the `player` property of the `Game`. 
+1. As a reminder, we have already defined the `player` property of the `Game` class and set it to `null`. Now let's instantiate a new `Player` object and store it in the `player` property of the `Game`.
 
 <details>
 	<summary>See the code</summary>
@@ -425,14 +423,7 @@ class Player {
 class Game {
   constructor() {
     // ...
-    this.player = new Player(
-      this.gameScreen,
-      200,
-      500,
-      100,
-      150,
-      "./images/car.png"
-    );
+    this.player = new Player(this.gameScreen, 200, 500, 100, 150, './images/car.png');
     // ...
   }
 
@@ -469,11 +460,7 @@ class Game {
 
 <br>
 
-
-
 ![island racer game - player car showing](https://education-team-2020.s3.eu-west-1.amazonaws.com/web-dev/m1/lab-dom-race-car/lab-dom-race-car-player.png)
-
-
 
 <br>
 
@@ -481,7 +468,7 @@ class Game {
 
 The goal of this iteration is to allow the player to control the car using the keyboard.
 
-To do this, we will add an event listener in the `js/script.js` file, which will update the player's car `directionX` and `directionY` properties based on the keys that the user presses on the keyboard. 
+To do this, we will add an event listener in the `js/script.js` file, which will update the player's car `directionX` and `directionY` properties based on the keys that the user presses on the keyboard.
 This function listens for the `keydown` event using `document.onkeydown` and checks if the pressed key matches any of the allowed keystrokes (arrow keys).
 
 <details>
@@ -498,12 +485,7 @@ window.onload = function () {
   // Function that handles keydown event
   function handleKeydown(event) {
     const key = event.key;
-    const possibleKeystrokes = [
-      "ArrowLeft",
-      "ArrowUp",
-      "ArrowRight",
-      "ArrowDown",
-    ];
+    const possibleKeystrokes = ['ArrowLeft', 'ArrowUp', 'ArrowRight', 'ArrowDown'];
 
     // Check if the pressed key is in the possibleKeystrokes array
     if (possibleKeystrokes.includes(key)) {
@@ -511,16 +493,16 @@ window.onload = function () {
 
       // Update player's directionX and directionY based on the key pressed
       switch (key) {
-        case "ArrowLeft":
+        case 'ArrowLeft':
           game.player.directionX = -1;
           break;
-        case "ArrowUp":
+        case 'ArrowUp':
           game.player.directionY = -1;
           break;
-        case "ArrowRight":
+        case 'ArrowRight':
           game.player.directionX = 1;
           break;
-        case "ArrowDown":
+        case 'ArrowDown':
           game.player.directionY = 1;
           break;
       }
@@ -528,7 +510,7 @@ window.onload = function () {
   }
 
   // Add the handleKeydown function as an event listener for the keydown event
-  window.addEventListener("keydown", handleKeydown);
+  window.addEventListener('keydown', handleKeydown);
 };
 ```
 
@@ -577,7 +559,7 @@ In this iteration, we will create the `Obstacle` class, which will be used to cr
    <details>
      <summary> <code><b>move()</b></code> </summary>
 
-   - Move the obstacle down by 3px by continuously updating its `top` property. 
+   - Move the obstacle down by 3px by continuously updating its `top` property.
 
    - Update the obstacle's position on the screen by calling the `updatePosition()` method.
 
@@ -607,10 +589,10 @@ class Obstacle {
     this.top = 0;
     this.width = 100;
     this.height = 150;
-    this.element = document.createElement("img");
+    this.element = document.createElement('img');
 
-    this.element.src = "./images/redCar.png";
-    this.element.style.position = "absolute";
+    this.element.src = './images/redCar.png';
+    this.element.style.position = 'absolute';
     this.element.style.width = `${this.width}px`;
     this.element.style.height = `${this.height}px`;
     this.element.style.left = `${this.left}px`;
@@ -663,16 +645,15 @@ This method is responsible for updating the game state during each loop iteratio
 
 - Check if the player has run out of lives, and end the game if so. Create a new method (`endGame`) responsible for ending the game.
 
-
 </details>
  
  <details>
    <summary> <code><b>endGame()</b></code> </summary>
 
- - Remove a player and all the obstacles from the DOM.
- - Set the `gameIsOver` flag to `true`.
- - Hide the game screen.
- - Show the end game screen.
+- Remove a player and all the obstacles from the DOM.
+- Set the `gameIsOver` flag to `true`.
+- Hide the game screen.
+- Show the end game screen.
 
  </details>
 
@@ -737,14 +718,14 @@ class Game {
   // Create a new method responsible for ending the game
   endGame() {
     this.player.element.remove();
-    this.obstacles.forEach(obstacle => obstacle.element.remove());
+    this.obstacles.forEach((obstacle) => obstacle.element.remove());
 
     this.gameIsOver = true;
 
     // Hide game screen
-    this.gameScreen.style.display = "none";
+    this.gameScreen.style.display = 'none';
     // Show end game screen
-    this.gameEndScreen.style.display = "block";
+    this.gameEndScreen.style.display = 'block';
   }
 
   // ...
@@ -757,13 +738,9 @@ class Game {
 
 <br>
 
-
-
 <img src="https://education-team-2020.s3.eu-west-1.amazonaws.com/web-dev/m1/lab-dom-race-car/lab-dom-race-car-start-game-obstacles.gif" width="600" style="display: block; margin: 0 auto" />
 
 <br>
-
-
 
 ## Iteration 8: End Game Screen
 
@@ -787,7 +764,7 @@ window.onload = function () {
   // ...
 
   // Add an event listener to the restart button
-  restartButton.addEventListener("click", function () {
+  restartButton.addEventListener('click', function () {
     // Call the restartGame function when the button is clicked
     restartGame();
   });
@@ -834,10 +811,10 @@ class Component {
     this.top = top;
     this.width = width;
     this.height = height;
-    this.element = document.createElement("img");
+    this.element = document.createElement('img');
 
     this.element.src = imgSrc;
-    this.element.style.position = "absolute";
+    this.element.style.position = 'absolute';
     this.element.style.width = `${width}px`;
     this.element.style.height = `${height}px`;
     this.element.style.left = `${left}px`;
@@ -900,14 +877,13 @@ class Player extends Component {
       playerRect.top < obstacleRect.bottom &&
       playerRect.bottom > obstacleRect.top
     ) {
-      console.log("Crash!");
+      console.log('Crash!');
       return true;
     } else {
       return false;
     }
   }
 }
-
 ```
 
 <br>
@@ -917,14 +893,7 @@ class Player extends Component {
 
 class Obstacle extends Component {
   constructor(gameScreen) {
-    super(
-      gameScreen,
-      Math.floor(Math.random() * 300 + 70),
-      0,
-      100,
-      150,
-      "./images/redCar.png"
-    );
+    super(gameScreen, Math.floor(Math.random() * 300 + 70), 0, 100, 150, './images/redCar.png');
   }
 
   move() {
@@ -933,16 +902,12 @@ class Obstacle extends Component {
     // Update the obstacle's position on the screen
     this.updatePosition();
   }
-  
 }
-
 ```
 
 <br>
 
 </details>
-
-
 
 <br>
 
@@ -956,7 +921,7 @@ To make the game more competitive, add elements to shows the player's score and 
 
 ## Lab Solution
 
-You can find the complete solution code for the lab at:  [dom-race-car](https://github.com/ironhack-labs/lesson-code-dom-race-car).
+You can find the complete solution code for the lab at: [dom-race-car](https://github.com/ironhack-labs/lesson-code-dom-race-car).
 
 To clone the solution repository, run the following commands:
 
@@ -967,8 +932,6 @@ git clone https://github.com/ironhack-labs/lesson-code-dom-race-car.git
 # navigate to the cloned repo
 cd lesson-code-dom-race-car
 ```
-
-
 
 <br>
 

@@ -52,8 +52,11 @@ class Game {
       //obstavle is not defined
       if (this.player.didCollide(obstacle)) {
         obstacle.element.remove();
+
         this.lives--;
+        document.getElementById("lives").innerHTML = this.lives;
         this.obstacles.splice(i, 1);
+
         i--;
       } else if (obstacle.top > this.top) {
         obstacle.element.remove();

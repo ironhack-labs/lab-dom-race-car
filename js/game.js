@@ -1,6 +1,6 @@
 class Game {
   constructor(startScreen, gameScreen, gameEndScreen) {
-    this.startScreen = document.getElementById("start-intro");
+    this.startScreen = document.getElementById("game-intro");
     this.gameScreen = document.getElementById("game-screen");
     this.gameEndScreen = document.getElementById("game-end");
     this.player = null;

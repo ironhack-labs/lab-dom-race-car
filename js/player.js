@@ -22,26 +22,21 @@ class Player {
     this.gameScreen.appendChild(this.element);
   }
   move() {
-    // if (this.directionY) {
-    //   this.height += this.directionY;
-    // } else if (this.directionX) {
-    //   this.width += this.directionX;
-    // }
-    // if (this.left < 10) {
-    //   this.left = this.directionX;
-    // }
+    if (this.left < 10) {
+      this.left = this.directionX;
+    }
 
-    // if (this.top < 10) {
-    //   this.top = this.directionY;
-    // }
+    if (this.top < 10) {
+      this.top = this.directionY;
+    }
 
-    // if (this.left > this.gameScreen.offsetWidth - this.width - 10) {
-    //   this.left = this.gameScreen.offsetWidth - this.width - 10;
-    // }
+    if (this.left > this.gameScreen.offsetWidth - this.width - 10) {
+      this.left = this.gameScreen.offsetWidth - this.width - 10;
+    }
 
-    // if (this.top > this.gameScreen.offsetHeight - this.height - 10) {
-    //   this.top = this.gameScreen.offsetHeight - this.height - 10;
-    // }
+    if (this.top > this.gameScreen.offsetHeight - this.height - 10) {
+      this.top = this.gameScreen.offsetHeight - this.height - 10;
+    }
     this.left += this.directionX;
     this.top += this.directionY;
     this.updatePosition();

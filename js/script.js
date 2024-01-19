@@ -24,7 +24,7 @@ window.onload = function () {
 
     if (possibleKeystrokes.includes(key)) {
       event.preventDefault();
-
+      console.log(key);
       switch (key) {
         case "ArrowLeft":
           game.player.directionX = -1;

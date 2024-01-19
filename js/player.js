@@ -18,24 +18,24 @@ class Player {
   }
 
   move() {
-    this.top += directionY;
+    this.top += this.directionY;
     this.left += this.directionX;
     if (this.left < 10) {
-        this.left = 10;
-      }
-  
-      if (this.top < 10) {
-        this.top = 10;
-      }
-  
-      if (this.left > this.gameScreen.offsetWidth - this.width - 10) {
-        this.left = this.gameScreen.offsetWidth - this.width - 10;
-      }
-  
-      if (this.top > this.gameScreen.offsetHeight - this.height - 10) {
-        this.top = this.gameScreen.offsetHeight - this.height - 10;
-      }
-      this.updatePosition();
+      this.left = 10;
+    }
+
+    if (this.top < 10) {
+      this.top = 10;
+    }
+
+    if (this.left > this.gameScreen.offsetWidth - this.width - 10) {
+      this.left = this.gameScreen.offsetWidth - this.width - 10;
+    }
+
+    if (this.top > this.gameScreen.offsetHeight - this.height - 10) {
+      this.top = this.gameScreen.offsetHeight - this.height - 10;
+    }
+    this.updatePosition();
   }
 
   updatePosition() {
@@ -57,6 +57,5 @@ class Player {
     } else {
       return false;
     }
-}
-
+  }
 }

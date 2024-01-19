@@ -50,7 +50,7 @@ class Player {
     this.element.style.top = `${this.top}px`;
   }
 
-  didCollide() {
+  didCollide(obstacle) {
     const playerLeft = this.element.getBoundingClientRect();
     const obstacles = obstacle.element.getBoundingClientRect();
 

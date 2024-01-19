@@ -44,5 +44,43 @@ class Game {
 
   update() {
     this.player.move();
+
+    for (let i = 0; i < this.obstacles.length; i++) {
+      const obstacle = this.obstacles[i];
+      obstacle.move();
+
+      //obstavle is not defined
+      if (this.player.didCollide(obstacle)) {
+        obstacle.element.remove();
+        this.lives--;
+        this.obstacles.splice(i, 1);
+        i--;
+      } else if (obstacle.top > this.top) {
+        obstacle.element.remove();
+        this.obstacles.splice(i, 1);
+        this.score++;
+      }
+    }
+
+    if (this.lives === 0) {
+      this.endGame();
+    }
+
+    //randomly generate obstacles
+    if (Math.random() > 0.98 && this.obstacles.length < 1) {
+      this.obstacles.push(new Obstacle(this.gameScreen));
+    }
+  }
+
+  endGame() {
+    //remove player
+    this.player.element.remove();
+    //remove obstacles
+    this.obstacles.forEach((obstacle) => obstacle.element.remove());
+
+    this.gameIsOver = true;
+    this.gameScreen.style.display = "none";
+    this.gameEndScreen.style.display = "block";
+    document.getElementById("score").innerHTML = this.score;
   }
 }

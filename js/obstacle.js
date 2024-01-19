@@ -1,4 +1,4 @@
-class Obstacles {
+class Obstacle {
   constructor(gameScreen) {
     this.gameScreen = gameScreen;
     this.left = Math.floor(Math.random() * 300 + 70);
@@ -18,13 +18,13 @@ class Obstacles {
     this.gameScreen.appendChild(this.element);
   }
 
-  move() {
-    this.top += 10;
-    this.updatePosition();
-  }
-
   updatePosition() {
     this.element.style.left = `${this.left}px`;
     this.element.style.top = `${this.top}px`;
+  }
+
+  move() {
+    this.top += 3;
+    this.updatePosition();
   }
 }

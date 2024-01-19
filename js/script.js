@@ -8,6 +8,7 @@ window.onload = function () {
 
   function startGame() {
     console.log("start game");
-    // transition from the start screen to the game screen, initiating the game.
+    game = new Game();
+    game.start()
   }
 };

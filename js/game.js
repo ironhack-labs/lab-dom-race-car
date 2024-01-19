@@ -1,10 +1,16 @@
-
 class Game {
   constructor() {
     this.startScreen = document.getElementById("game-intro");
     this.gameScreen = document.getElementById("game-screen");
     this.gameEndScreen = document.getElementById("game-end");
-    this.player = null;
+    this.player = new Player(
+        this.gameScreen,
+        200,
+        500,
+        100,
+        150,
+        "./images/car.png"
+      );
     this.height = 600;
     this.width = 500;
     this.obstacles = [];
@@ -21,8 +27,8 @@ class Game {
     this.startScreen.style.display = "none";
     this.gameScreen.style.display = "block";
     this.gameIntervalId = setInterval(() => {
-        this.gameLoop()
-    }, this.gameLoopFrequency)
+      this.gameLoop();
+    }, this.gameLoopFrequency);
   }
 
   gameLoop() {
@@ -32,7 +38,9 @@ class Game {
       clearInterval(this.gameIntervalId);
     }
   }
+
   update() {
     console.log("in the update");
+    this.player.move();
   }
 }

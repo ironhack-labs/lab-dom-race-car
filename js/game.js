@@ -3,7 +3,14 @@ class Game {
     this.startScreen = document.getElementById("game-intro");
     this.gameScreen = document.getElementById("game-screen");
     this.gameEndScreen = document.getElementById("game-end");
-    this.player = null;
+    this.player = new Player(
+      this.gameScreen,
+      225,
+      500,
+      50,
+      100,
+      "./images/car.png"
+    );
     this.height = 600;
     this.width = 500;
     this.obstacles = [];
@@ -36,6 +43,6 @@ class Game {
   }
 
   update() {
-    console.log("update");
+    this.player.move();
   }
 }

@@ -1,5 +1,5 @@
 class Game {
-  constructor(startScreen, gameScreen, gameEndScreen) {
+  constructor() {
     this.startScreen = document.getElementById("game-intro");
     this.gameScreen = document.getElementById("game-screen");
     this.gameEndScreen = document.getElementById("game-end");

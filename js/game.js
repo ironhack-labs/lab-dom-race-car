@@ -3,6 +3,14 @@ class Game {
     this.startScreen = document.getElementById("game-intro");
     this.gameScreen = document.getElementById("game-screen");
     this.gameEndScreen = document.getElementById("game-end");
+
+    this.scoreValue = 0;
+    this.livesValue = 3;
+
+    // Select the DOM elements for the score and lives
+    this.scoreElement = document.getElementById("score");
+    this.livesElement = document.getElementById("lives");
+
     this.player = new Player(
       this.gameScreen,
       200,
@@ -19,8 +27,14 @@ class Game {
     this.gameIsOver = false;
     this.gameIntervalId;
     this.gameLoopFrequency = Math.round(1000 / 60);
-    this.lastObstacleTime = 0;
   }
+
+  // reset() {
+  //   this.obstacles = [];
+  //   this.score = 0;
+  //   this.lives = 3;
+  //   this.gameIsOver = false;
+  // }
 
   start() {
     this.gameScreen.style.height = `${this.height}px`;
@@ -41,26 +55,45 @@ class Game {
   }
 
   update() {
-    console.log("in the update");
     this.player.move();
 
-    const currentTime = Date.now();
-    const timeSinceLastObstacle = currentTime - this.lastObstacleTime;
+    for (let i = 0; i < this.obstacles.length; i++) {
+      const obstacle = this.obstacles[i];
+      obstacle.move();
 
-    if (timeSinceLastObstacle >= 2000) {
+      if (this.player.didCollide(obstacle)) {
+        obstacle.element.remove();
+        this.obstacles.splice(i, 1);
+        this.livesValue--;
+        this.livesElement.textContent = this.livesValue;
+        console.log("Collision! Lives:", this.livesValue);
+        i--;
+      }
+
+      if (obstacle.top > this.height) {
+        this.scoreValue++;
+        this.scoreElement.textContent = this.scoreValue;
+        obstacle.element.remove();
+        this.obstacles.splice(i, 1);
+        console.log("Scored! Score:", this.scoreValue);
+        i--;
+      }
+    }
+
+    if (this.livesValue === 0) {
+      this.endGame();
+    }
+
+    if (Math.random() > 0.98 && this.obstacles.length < 1) {
       this.obstacles.push(new Obstacle(this.gameScreen));
-      this.lastObstacleTime = currentTime;
     }
-    
-    this.obstacles = this.obstacles.filter((obstacle) => {
-        obstacle.move()
-    if(obstacle.top < 700){
-    return true;
-  } else {
-      obstacle.remove();
-      return false;
-    }
-});
-}
+  }
 
+  endGame() {
+    this.player.element.remove();
+    this.obstacles.forEach((obstacle) => obstacle.element.remove());
+    this.gameIsOver = true;
+    this.gameScreen.style.display = "none";
+    this.gameEndScreen.style.display = "block";
+  }
 }

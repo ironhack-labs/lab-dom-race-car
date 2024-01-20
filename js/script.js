@@ -12,4 +12,25 @@ window.onload = function () {
   }
 };
 
-
+function handleKeydown(event) {
+  const key = event.key;
+  switch (key) {
+    case "ArrowLeft":
+      game.player.directionX = -10;
+      event.preventDefault();
+      break;
+    case "ArrowUp":
+      game.player.directionY = -10;
+      event.preventDefault();
+      break;
+    case "ArrowRight":
+      game.player.directionX = 10;
+      event.preventDefault();
+      break;
+    case "ArrowDown":
+      game.player.directionY = 10;
+      event.preventDefault();
+      break;
+  }
+}
+document.addEventListener("keydown", handleKeydown);

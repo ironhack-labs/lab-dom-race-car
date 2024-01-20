@@ -3,7 +3,14 @@ class Game {
     this.startScreen = document.getElementById("game-intro");
     this.gameScreen = document.getElementById("game-screen");
     this.gameEndScreen = document.getElementById("game-end");
-    this.player = null;
+    this.player = new player(
+      this.gameScreen,
+      200, //this.left --> how far away the player is from the left side
+      500, //this.right --> how far away the player is from the top
+      100, //this.width --> the width of the player (image)
+      150, //this.height --> the height of the player (image)
+      "./images/car.png"
+    );
     this.height = 600;
     this.width = 500;
     this.obstables = [];
@@ -32,6 +39,6 @@ class Game {
     }
   }
   update() {
-    console.log("in the update");
+    this.player.move();
   }
 }

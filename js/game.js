@@ -3,6 +3,8 @@ class Game {
     this.startScreen = document.getElementById("game-intro");
     this.gameScreen = document.getElementById("game-screen");
     this.gameEndScreen = document.getElementById("game-end");
+    this.livesElement = document.getElementById("lives");
+    this.scoreElement = document.getElementById("score");
     this.player = new Player(
       this.gameScreen,
       200, //this.left --> how far away the player is from the left side
@@ -67,6 +69,10 @@ class Game {
       const newlyCreatedObstacle = new Obstacle(this.gameScreen);
       this.obstacles.push(newlyCreatedObstacle);
     }
+
+    // update score and lives
+    this.scoreElement.textContent = this.score;
+    this.livesElement.textContent = this.lives;
   }
 
   endGame() {

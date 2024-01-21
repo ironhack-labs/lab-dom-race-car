@@ -20,19 +20,19 @@ function handleKeydown(event) {
   const key = event.key;
   switch (key) {
     case "ArrowLeft":
-      game.player.directionX = -1;
+      game.player.directionX = -3;
       event.preventDefault();
       break;
     case "ArrowUp":
-      game.player.directionY = -1;
+      game.player.directionY = -3;
       event.preventDefault();
       break;
     case "ArrowRight":
-      game.player.directionX = 1;
+      game.player.directionX = 3;
       event.preventDefault();
       break;
     case "ArrowDown":
-      game.player.directionY = 1;
+      game.player.directionY = 3;
       event.preventDefault();
       break;
   }

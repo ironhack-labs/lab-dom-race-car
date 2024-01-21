@@ -1,10 +1,14 @@
 class Game {
   constructor() {
     this.startScreen = document.getElementById("game-intro");
+    this.gameContainer = document.getElementById('game-container')
     this.gameScreen = document.getElementById("game-screen");
     this.gameEndScreen = document.getElementById("game-end");
     this.livesElement = document.getElementById("lives");
     this.scoreElement = document.getElementById("score");
+    this.highscoreElement = document.getElementById("highscore");
+    this.highscore = localStorage.getItem("highscore") || 0;
+    this.highscoreElement.textContent = this.highscore;
     this.player = new Player(
       this.gameScreen,
       200, //this.left --> how far away the player is from the left side
@@ -27,7 +31,7 @@ class Game {
     this.gameScreen.style.height = `${this.height}px`;
     this.gameScreen.style.width = `${this.width}px`;
     this.startScreen.style.display = "none";
-    this.gameScreen.style.display = "block";
+    this.gameContainer.style.display = "flex";
     this.gameIntervalId = setInterval(() => {
       this.gameLoop();
     }, this.gameLoopFrecuency);
@@ -81,7 +85,21 @@ class Game {
       obs.element.remove();
     }) 
     this.gameIsOver = true;
-    this.gameScreen.style.display = "none";
+    
+    this.gameContainer.style.display = "none";
     this.gameEndScreen.style.display = "block";
+
+    // check if we beat the highscore
+    if (this.score > this.highscore) {
+      this.highscore = this.score;
+      this.highscoreElement.innerText = this.highscore;
+      localStorage.setItem('highscore', this.highscore)
+      const congrats = document.createElement('h2');
+      congrats.innerText = 'Congrats, you beat the highscore!'
+      this.gameEndScreen.insertBefore(
+        congrats,
+        document.getElementById("restart-button")
+      );
+    }
   }
 }

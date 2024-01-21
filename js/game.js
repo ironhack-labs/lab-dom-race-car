@@ -39,6 +39,9 @@ class Game {
   }
   update() {
     this.player.move();
+    this.obstables.forEach((obs) => {
+      obs.move();
+    })
 
     // Generate a random number that's above 0.98 so 1% chance and push to the
     // empty array named obstacles if it's empty

@@ -13,7 +13,7 @@ class Game {
     );
     this.height = 600;
     this.width = 500;
-    this.obstables = [];
+    this.obstacles = [];
     this.score = 0;
     this.lives = 3;
     this.gameIsOver = false;
@@ -39,15 +39,43 @@ class Game {
   }
   update() {
     this.player.move();
-    this.obstables.forEach((obs) => {
+    this.obstacles.forEach((obs, index) => {
       obs.move();
-    })
+      if (this.player.didCollide(obs)) {
+        // Remove the image element of the obstacle from the DOM
+        obs.element.remove();
+        // Remove one item from the obstacle array from position "index"
+        this.obstacles.splice(index, 1);
+        // Reduce player's lives by 1
+        this.lives--;
+      } else if (obs.top > this.height) {
+        // Increase the score by 1
+        this.score++;
+        // Remove the obstacle from the DOM
+        obs.element.remove();
+        // Remove one item from the obstacle array from position "index"
+        this.obstacles.splice(index, 1);
+      }
+      if (this.lives === 0) {
+        this.endGame();
+      }
+    });
 
     // Generate a random number that's above 0.98 so 1% chance and push to the
     // empty array named obstacles if it's empty
-    if (Math.random() > 0.98 && this.obstables.length < 1) {
+    if (Math.random() > 0.98 && this.obstacles.length < 1) {
       const newlyCreatedObstacle = new Obstacle(this.gameScreen);
-      this.obstables.push(newlyCreatedObstacle);
+      this.obstacles.push(newlyCreatedObstacle);
     }
+  }
+
+  endGame() {
+    this.player.element.remove();
+    this.obstacles.forEach(obs => {
+      obs.element.remove();
+    }) 
+    this.gameIsOver = true;
+    this.gameScreen.style.display = "none";
+    this.gameEndScreen.style.display = "block";
   }
 }

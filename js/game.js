@@ -3,7 +3,7 @@ class Game {
     this.startScreen = document.getElementById("game-intro");
     this.gameScreen = document.getElementById("game-screen");
     this.gameEndScreen = document.getElementById("game-end");
-    this.player = new player(
+    this.player = new Player(
       this.gameScreen,
       200, //this.left --> how far away the player is from the left side
       500, //this.right --> how far away the player is from the top
@@ -32,7 +32,6 @@ class Game {
   }
 
   gameLoop() {
-    console.log("in the game loop");
     this.update();
     if (this.gameIsOver) {
       clearInterval(this.gameIntervalId);
@@ -40,5 +39,12 @@ class Game {
   }
   update() {
     this.player.move();
+
+    // Generate a random number that's above 0.98 so 1% chance and push to the
+    // empty array named obstacles if it's empty
+    if (Math.random() > 0.98 && this.obstables.length < 1) {
+      const newlyCreatedObstacle = new Obstacle(this.gameScreen);
+      this.obstables.push(newlyCreatedObstacle);
+    }
   }
 }

@@ -1,4 +1,4 @@
-class player {
+class Player {
   constructor(gameScreen, left, top, width, height, imageSrc) {
     this.gameScreen = gameScreen;
     this.left = left; // --> how far away the player is from the left side

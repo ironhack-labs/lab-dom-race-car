@@ -9,10 +9,10 @@ class Obstacle {
     this.element.src = "./images/redCar.png";
     this.element.style.position = "absolute"; // changing the position to absolute
     //Setting the default element's property values
-    this.element.style.width = `${width}px`;
-    this.element.style.height = `${height}px`;
-    this.element.style.left = `${left}px`;
-    this.element.style.top = `${top}px`;
+    this.element.style.width = `${this.width}px`;
+    this.element.style.height = `${this.height}px`;
+    this.element.style.left = `${this.left}px`;
+    this.element.style.top = `${this.top}px`;
     this.gameScreen.appendChild(this.element);
   }
 
@@ -25,7 +25,7 @@ class Obstacle {
 
   updatePosition() {
     // render the obstacle with new CSS styles
-    this.element.style.left = `${left}px`;
-    this.element.style.top = `${top}px`;
+    this.element.style.left = `${this.left}px`;
+    this.element.style.top = `${this.top}px`;
   }
 }

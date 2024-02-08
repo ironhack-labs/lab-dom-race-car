@@ -1,0 +1,29 @@
+class Player {
+  constructor(gameScreen, left, top, width, height, imgSrc) {
+    this.gameScreen = gameScreen;
+    this.left = left;
+    this.top = top;
+    this.width = width;
+    this.height = height;
+    this.directionX = 0;
+    this.directionY = 0;
+    this.element = document.createElement("img");
+    this.element.src = imgSrc;
+    this.element.style.width = `${width}px`;
+    this.element.style.height = `${height}px`;
+    this.element.style.left = `${left}px`;
+    this.element.style.top = `${top}px`;
+    this.gameScreen.appendChild(this.element);
+  }
+
+  move(directionX, directionY) {
+    if (directionX + this.left > this.width) this.left = this.width;
+    if (directionY + this.top > this.height) this.top = this.height;
+
+    this.left = directionX;
+    this.top = directionY;
+  }
+}
+
+const game = new Game(); 
+const player = new Player(game, 10, 10, 60, 60, "images\redCar.png")

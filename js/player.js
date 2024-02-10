@@ -21,6 +21,8 @@ class Player {
   }
 
   move() {
+    this.left += this.directionX;
+    this.top += this.directionY;
     // Control left, top, right and bottom
     if (this.left < 10) this.left = 10;
     if (this.top < 10) this.top = 10;
@@ -29,10 +31,8 @@ class Player {
     if (this.top > this.gameScreen.offsetHeight - this.height - 10)
       this.top = this.gameScreen.offsetHeight - this.height - 10;
 
-    this.left += directionX;
-    this.top += directionY;
 
-    updatePosition(this.left, this.top);
+    this.updatePosition();
   }
 
   updatePosition(left, top) {

@@ -51,5 +51,53 @@ class Game {
 
   update() {
     this.player.move();
+
+    // Get score and lives elements from DOM for updating
+    const score = document.getElementById("score");
+    const lives = document.getElementById("lives");
+
+
+    // Check for collision and if an obstacle is still on the screen
+    for (let i = 0; i < this.obstacles.length; i++) {
+      const obstacle = this.obstacles[i];
+      obstacle.move();
+
+      // If the player's car collides with an obstacle, remove obstacle from DOM and array
+      if (this.player.didCollide(obstacle)) {
+        obstacle.element.remove();
+        this.obstacles.splice(i, 1);
+        this.lives--;
+        lives.textContent = `${this.lives}`;
+        // Update the counter variable
+        i--;
+      } // If the obstacle is off the screen, remove obstacle from DOM and array
+      else if (obstacle.top > this.height) {
+        this.score++;
+        score.textContent = `${this.score}`;
+        obstacle.element.remove();
+        this.obstacles.splice(i, 1);
+        i--;
+      }
+    }
+
+    if (this.lives === 0) {
+      this.endGame();
+    }
+
+    // Create a new obstacle based on a low random probability
+    if (Math.random() > 0.98 && this.obstacles.length < 1) {
+      this.obstacles.push(new Obstacle(this.gameScreen));
+    }
+  }
+
+  endGame() {
+    this.player.element.remove();
+    this.obstacles.forEach((obstacle) => obstacle.element.remove());
+
+    this.gameIsOver = true;
+
+    this.gameScreen.style.display = "none";
+
+    this.gameEndScreen.style.display = "block";
   }
 }

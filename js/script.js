@@ -48,6 +48,7 @@ window.onload = function () {
     }
   }
 
+  // Refresh if restart button is pressed
   restartButton.addEventListener("click", function () {
     location.reload();
   });

@@ -16,14 +16,44 @@ class Player {
     this.gameScreen.appendChild(this.element);
   }
 
-  move(directionX, directionY) {
-    if (directionX + this.left > this.width) this.left = this.width;
-    if (directionY + this.top > this.height) this.top = this.height;
+  move() {
+    // Control left, top, right and bottom
+    if (this.left < 10) this.left = 10;
+    if (this.top < 10) this.top = 10;
+    if (this.left > this.gameScreen.offsetWidth - this.width - 10)
+      this.left = this.gameScreen.offsetWidth - this.width - 10;
+    if (this.top > this.gameScreen.offsetHeight - this.height - 10)
+      this.top = this.gameScreen.offsetHeight - this.height - 10;
 
-    this.left = directionX;
-    this.top = directionY;
+    this.left += directionX;
+    this.top += directionY;
+
+    updatePosition(this.left, this.top);
+  }
+
+  updatePosition(left, top) {
+    this.element.style.left = `${this.left}px`;
+    this.element.style.top = `${this.top}px`; 
+  }
+
+  didCollide(obstacle) {
+    // Get outer bounds/limits of elements
+    const playerRect = this.element.getBoundingClientRect();
+    const obstacleRect = obstacle.element.getBoundingClientRect();
+
+    if (
+      playerRect.left < obstacleRect.right &&
+      playerRect.right > obstacleRect.left &&
+      playerRect.top < obstacleRect.bottom &&
+      playerRect.bottom > obstacleRect.top
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
 
-const game = new Game(); 
-const player = new Player(game, 10, 10, 60, 60, "images\redCar.png")
+const game = new Game();
+const player = new Player(game, 10, 10, 60, 60, ".images\redCar.png");
+player.move(10, 10);

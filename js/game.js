@@ -49,13 +49,13 @@ class Game {
     }
   }
 
+  // BONUS - Iteration 10: display score and lives in HTML
   update() {
     this.player.move();
 
     // Get score and lives elements from DOM for updating
     const score = document.getElementById("score");
     const lives = document.getElementById("lives");
-
 
     // Check for collision and if an obstacle is still on the screen
     for (let i = 0; i < this.obstacles.length; i++) {

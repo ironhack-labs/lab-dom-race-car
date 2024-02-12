@@ -50,5 +50,6 @@ class Game {
 
   update() {
     console.log("in the update");
+    this.player.move()
   }
 }

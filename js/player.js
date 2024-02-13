@@ -19,47 +19,43 @@ class Player {
   move() {
     this.left += this.directionX;
     this.top += this.directionY;
-    if(this.left<20)
+    
+    if(this.left < 10)
     {
-        this.left=20;
+      this.left = 10;
     }
-    if(this.top<20)
+    if(this.top < 10)
     {
-        this.top=20;
+      this.top = 10;
     }
-    if(this.right<20)
-    {
-        this.right=20;
+    if(this.left > this.gameScreen.offsetWidth - this.width-10) {
+      this.left = this.gameScreen.offsetWidth - this.width-10;
     }
-    if(this.bottom<20)
-    {
-        this.bottom=20;
+    if(this.top > this.gameScreen.offsetHeight - this.height - 10) {
+      this.top = this.gameScreen.offsetHeight - this.height - 10;
     }
-    if(this.left>this.gameScreen.offSetWidth-this.width-20){
-        this.left=this.gameScreen.offSetWidth-this.width-20;
-    }
-    if(this.top>this.gameScreen.offSetWidth-this.width-20){
-        this.top=this.gameScreen.offSetWidth-this.width-20;
-    }
+
+    this.updatePosition();
   }
+
+  didCollide(obstacle) {
+    const playerAction = this.element.getBoundingClientRect();
+    const obstacleAction = obstacle.element.getBoundingClientRect();
+    
+   if (
+    playerAction.left < obstacleAction.right &&
+    playerAction.right > obstacleAction.left &&
+    playerAction.top < obstacleAction.bottom &&
+    playerAction.bottom > obstacleAction.top
+    ) {
+        return true;
+      } else {
+        return false;
+      }
+  }
+
   updatePosition() {
     this.element.style.left = `${this.left}px`;
     this.element.style.top = `${this.top}px`;
   }
-  didCollide(Obstacle) {
-    const playerAction=this.element.getBoundingClientRect();
-    const obstacleAction=this.element.getBoundingClientRect();
-    
-   if(playerAction.left<ObstacleAction.right && playerAction.right>ObstacleAction.left && 
-    playerAction.top<ObstacleAction.bottom && playerAction.bottom>obstacleAction.top)
-    {
-        return true;
-    }
-    
-  }
-  else
-  {
-    return false;
-  }
 }
-

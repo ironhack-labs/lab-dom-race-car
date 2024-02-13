@@ -3,7 +3,14 @@ class Game {
     this.startScreen = document.querySelector("#game-intro");
     this.gameScreen = document.querySelector("#game-screen");
     this.gameEndScreen = document.querySelector("#game-end");
-    this.player = null;
+    this.player = new Player(
+      this.gameScreen,
+      200,
+      500,
+      100,
+      150,
+      "./images/car.png"
+    );
     this.height = 600;
     this.width = 500;
     this.obstacles = [];
@@ -18,16 +25,19 @@ class Game {
   start() {
     this.gameScreen.style.height = `${this.height}px`;
     this.gameScreen.style.width = `${this.width}px`;
+    
     this.startScreen.style.display = "none";
+    
     this.gameScreen.style.display = "block";
+    
     this.gameIntervalId = setInterval(() => {
       this.gameLoop();
     }, this.gameLoopFrequency);
-    this.player = new Player(this.gameScreen, 20, 20, 20, 20, "images/car.png");
   }
 
   gameLoop() {
     this.update();
+    
     if (this.gameIsOver) {
       clearInterval(this.gameIntervalId);
     }

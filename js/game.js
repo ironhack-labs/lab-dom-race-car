@@ -52,12 +52,12 @@ class Game {
         obstacle.element.remove();
         this.obstacles.splice(i, 1);
         this.lives--;
-        document.getElementById("lives").innerText = this.lives;
+        document.getElementById("lives").innerText = this.lives.toString();
         i--;
       } else if (obstacle.top > this.height) {
         obstacle.element.remove();
         this.score++;
-        document.getElementById("score").innerText = this.score;
+        document.getElementById("score").innerText = this.score.toString();
         this.obstacles.splice(i, 1);
         i--;
       }

@@ -23,6 +23,7 @@ body {
   background-image: url(../images/road.png);
   background-size: cover;
   animation: slide 5s linear infinite;
+  color: white;
 }
 
 @keyframes slide {

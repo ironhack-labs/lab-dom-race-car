@@ -1,23 +1,28 @@
 // js/script.js
 
+//  handles the game's start button.
+
 window.onload = function () {
   const startButton = document.getElementById("start-button");
   const restartButton = document.getElementById("restart-button");
   let game; // added
 
+  const gameScoresandLives = document.getElementById("game-score-live");
+
   startButton.addEventListener("click", function () {
     startGame();
+    gameScoresandLives.classList.toggle("game-score-live");
+    gameScoresandLives.classList.toggle("game-score-live-ingame");
   });
 
   function startGame() {
     console.log("start game");
     game = new Game(); // added
-
     game.start(); // added
   }
 
-   // Function that handles keydown event
-   function handleKeydown(event) {
+  // Function that handles keydown event
+  function handleKeydown(event) {
     const key = event.key;
     const possibleKeystrokes = [
       "ArrowLeft",
@@ -33,16 +38,16 @@ window.onload = function () {
       // Update player's directionX and directionY based on the key pressed
       switch (key) {
         case "ArrowLeft":
-          game.player.directionX = -1;
+          game.player.directionX = -3;
           break;
         case "ArrowUp":
-          game.player.directionY = -1;
+          game.player.directionY = -3;
           break;
         case "ArrowRight":
-          game.player.directionX = 1;
+          game.player.directionX = 3;
           break;
         case "ArrowDown":
-          game.player.directionY = 1;
+          game.player.directionY = 3;
           break;
       }
     }

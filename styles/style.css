@@ -64,3 +64,17 @@ body button {
   border-radius: 5px;
   margin-bottom: 20px;
 }
+
+.game-score-live{
+  background-color: aliceblue;
+  width: 30%;
+}
+
+.game-score-live-ingame {
+  background-color: aliceblue;
+  width: 30%;
+  height: 10rem;
+  position: relative;
+  margin-right: 30px;
+  margin-top: 200px;
+}

@@ -30,7 +30,7 @@ class Game {
     this.gameScreen.style.display = 'block';
     this.gameIntervalId = setInterval(() => {
       this.gameLoop();
-      this.counter
+    
     }, this.gameLoopFrequency);
   }
   restart(){

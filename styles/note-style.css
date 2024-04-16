@@ -1,0 +1,141 @@
+body {
+    padding: 0;
+    text-align: center;
+  }
+  
+  #game-intro {
+    padding: 20px 0px;
+  }
+  
+  #game-container {
+    display: flex;
+    width: 100vw;
+    padding: 20px 0px;
+    justify-content: center;
+  }
+  
+  #game-screen {
+    display: none;
+    align-content: center;
+    padding: 20px 0px;
+    overflow: hidden;
+    position: relative;
+    background-image: url(../images/road.png);
+    background-size: cover;
+    animation: slide 5s linear infinite;
+  }
+  
+  /* @keyframesの指定方法 */
+  @keyframes slide {
+    0% {
+      background-position: 0 -1000px;   /*アニメーションを開始するときのCSSを記述*/
+    }
+    95% {
+      background-position: 0 0;         /*アニメーションの中間のCSSを記述*/
+    }
+    100% {
+      background-position: 0 50px;      /*アニメーションを終了するときのCSSを記述*/
+    }
+  }
+  
+  /* 
+  from~toで指定する
+  0~100%はfrom~toと指定しても同じ動きになります。
+  @keyframes animation{
+    from{
+      アニメーションを開始するときのCSSを記述
+    }
+  
+    to{
+      アニメーションを終了するときのCSSを記述
+    }
+  } */
+  /* 
+  animationの指定方法
+  animationはアニメーションの名前や秒数、回数などを決められるプロパティです。
+  
+  animationには多くの種類があり、それぞれの場面に応じて適切なプロパティを選択します。
+
+  animation-name
+  animation-nameはアニメーションに名前をつけるプロパティです。半角英数字で任意の名前を指定します。
+  CSSアニメーションで実装するときは「このアニメーションはこの名前」という定義が必要です。この定義名に対して@keyframesでアニメーションの変化を指定します。
+  
+  記述例は以下のようになります。
+
+  .class{
+    animation-name: animation;"animation"という名前のアニメーションを定義する
+  }
+
+
+  ここで定義した名前を@keyframesに記述することで、初めてCSSアニメーションが機能します。
+  
+  @keyframes animation ここに定義名を記述する {
+    0%{
+      アニメーションを開始するときのCSSを記述
+    }
+    100%{
+      アニメーションを終了するときのCSSを記述
+    }
+  } */
+  
+/* animation-duration
+animation-durationはアニメーションの秒数を指定するプロパティです。初期値は0s、指定できる単位はs（秒）かms（ミリ秒）です。
+
+記述例は以下のようになります。
+
+animation-duration: 1s; 1秒かけてアニメーションさせる */
+
+
+/* 
+animation-timing-function
+animation-timing-functionはアニメーションの進行度合いを設定するプロパティです。
+
+初期値はease、指定できる値は次の7つです。
+
+指定できる値	値の意味
+ease（初期値）	開始時と終了時の動きをなめらかにする
+ease-in	開始時だけなめらかにする
+ease-out	終了時だけなめらかにする
+ease-in-out	easeよりもゆっくり変化させる
+linear	一定の速度で変化させる
+steps	コマ送りのように変化させる
+cubic-bezier	変化の度合いをX軸・Y軸で変化させる
+記述例は以下のようになります。
+
+animation-timing-function: ease; アニメーションの進行度合いを設定する
+ */
+
+/* 
+↓ more about CSS animation.....
+https://zero-plus.io/media/css-animation-keyframes/
+ */
+
+  
+  #game-end {
+    display: none;
+  }
+  
+  .game-intro p {
+    font-size: 18px;
+    font-family: "Verdana";
+  }
+  
+  .logo-img {
+    width: 350px;
+  }
+  
+  .arrows-img {
+    width: 150px;
+  }
+  
+  body button {
+    font-size: 30px;
+    background-color: #870007;
+    color: #fff;
+    padding: 20px 40px;
+    border: 0;
+    box-shadow: 0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  

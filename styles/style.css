@@ -1,13 +1,14 @@
 body {
   padding: 0;
   text-align: center;
+  font-family: ;
+  background-color: #870007;
 }
 
 #game-intro {
   padding: 20px 0px;
 }
-
-#game-container {
+d #game-container {
   display: flex;
   width: 100vw;
   padding: 20px 0px;
@@ -63,4 +64,17 @@ body button {
   box-shadow: 0;
   border-radius: 5px;
   margin-bottom: 20px;
+}
+
+.spin {
+  -webkit-animation: spin 0.2s linear;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }

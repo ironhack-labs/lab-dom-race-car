@@ -4,7 +4,12 @@ body {
 }
 
 #game-intro {
+  overflow: hidden;
   padding: 20px 0px;
+}
+
+img {
+  max-width: 100%;
 }
 
 #game-container {

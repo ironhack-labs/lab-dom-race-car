@@ -47,16 +47,16 @@ body {
 }
 
 .logo-img {
-  width: 350px;
+  width: 300px;
 }
 
 .arrows-img {
-  width: 150px;
+  width: 130px;
 }
 
 body button {
   font-size: 30px;
-  background-color: #870007;
+  background-color: #222250;
   color: #fff;
   padding: 20px 40px;
   border: 0;

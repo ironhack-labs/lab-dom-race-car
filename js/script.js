@@ -10,3 +10,5 @@ window.onload = function () {
     console.log("start game");
   }
 };
+
+// ejercicio entegado

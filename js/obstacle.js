@@ -1,0 +1,36 @@
+class obstacle extends Component {
+  constructor(gameScreen) {
+    super(
+      gameScreen,
+      Math.floor(Math.random() * 300 + 70),
+      0,
+      100,
+      150,
+      "./images/redCar.png"
+    );
+    this.gameScreen = gameScreen;
+    this.left = Math.floor(Math.random() * 300 + 70);
+    this.top = 0;
+    this.width = 100;
+    this.height = 150;
+    this.element = document.createElement("img");
+
+    this.element.src = "./images/redCar.png";
+    this.element.style.position = "absolute";
+    this.element.style.left = `${this.left}px`;
+    this.element.style.top = `${this.right}px`;
+    this.element.style.width = `${this.width}px`;
+    this.element.style.height = `${this.height}px`;
+
+    this.gameScreen.appendChild(this.element);
+  }
+  updatePosition() {
+    this.element.style.left = `${this.left}px`;
+    this.element.style.top = `${this.top}px`;
+  }
+
+  move() {
+    this.top += 3;
+    this.updatePosition();
+  }
+}

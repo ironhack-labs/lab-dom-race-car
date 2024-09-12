@@ -19,7 +19,7 @@ body {
   align-content: center;
   padding: 20px 0px;
   overflow: hidden;
-  position: relative;
+  position: relative;   /* this.element.style.position = "absolute";  BEST PRACTICE always set to relative */
   background-image: url(../images/road.png);
   background-size: cover;
   animation: slide 5s linear infinite;

@@ -18,11 +18,12 @@ body {
   display: none;
   align-content: center;
   padding: 20px 0px;
+  width: 200px;
   overflow: hidden;
   position: relative;
   background-image: url(../images/road.png);
   background-size: cover;
-  animation: slide 5s linear infinite;
+  animation: slide 1s linear infinite;
 }
 
 @keyframes slide {

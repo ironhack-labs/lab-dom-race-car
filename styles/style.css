@@ -18,9 +18,10 @@ body {
   display: none;
   align-content: center;
   padding: 20px 0px;
+  margin-left: 30px;
   overflow: hidden;
   position: relative;
-  background-image: url(../images/road.png);
+  background-image: url(../images/pokemon-road.png);
   background-size: cover;
   animation: slide 5s linear infinite;
 }

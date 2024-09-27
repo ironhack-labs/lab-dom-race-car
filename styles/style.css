@@ -14,16 +14,7 @@ body {
   justify-content: center;
 }
 
-#game-screen {
-  display: none;
-  align-content: center;
-  padding: 20px 0px;
-  overflow: hidden;
-  position: relative;
-  background-image: url(../images/road.png);
-  background-size: cover;
-  animation: slide 5s linear infinite;
-}
+
 
 @keyframes slide {
   0% {
@@ -63,4 +54,29 @@ body button {
   box-shadow: 0;
   border-radius: 5px;
   margin-bottom: 20px;
+}
+
+#game-screen {
+  display: none;
+  align-content: center;
+  flex-direction: column;
+
+  overflow: hidden;
+  position: relative;
+  background-image: url(../images/road.png);
+  background-size: cover;
+  animation: slide 5s linear infinite;
+}
+#score-container{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: blueviolet;
+}
+#score-container p{
+  color: white;
+  font-weight: bold;
+  font-size: 22px;
+  outline-color: black;
+  outline-width: 10;
 }

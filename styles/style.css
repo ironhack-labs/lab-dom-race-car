@@ -8,9 +8,9 @@ body {
 }
 
 #game-container {
-  display: flex;
+  display: none;
   width: 100vw;
-  padding: 20px 0px;
+  padding: 20px;
   justify-content: center;
 }
 

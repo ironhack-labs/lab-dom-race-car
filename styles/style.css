@@ -64,3 +64,14 @@ body button {
   border-radius: 5px;
   margin-bottom: 20px;
 }
+
+#score {
+  font-size: 30px;
+  color: aliceblue;
+  background-color: black;
+}
+#lives {
+  font-size: 25px;
+  color: red;
+  background-color: black;
+}

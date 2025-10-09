@@ -1,6 +1,7 @@
 body {
   padding: 0;
   text-align: center;
+  
 }
 
 #game-intro {
@@ -23,6 +24,7 @@ body {
   background-image: url(../images/road.png);
   background-size: cover;
   animation: slide 5s linear infinite;
+ 
 }
 
 @keyframes slide {
@@ -64,3 +66,6 @@ body button {
   border-radius: 5px;
   margin-bottom: 20px;
 }
+#controls { display:flex; gap:10px; justify-content:center; align-items:center; margin-top:12px; }
+#controls .v { display:flex; flex-direction:column; gap:50px; }
+#controls button { width:40px; height:40px; font-size:18px; background:#000; color:#fff; border:none; border-radius:4px; }

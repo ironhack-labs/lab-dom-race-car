@@ -11,33 +11,40 @@
     <main>
       <!-- #game-intro is initially shown on the game start screen -->
       <div id="game-intro">
-        <img src="./images/logo.png" alt="" class="logo-img" />
+        <img src="./images/logo.png" class="logo-img" alt="logo"/>
         <br />
         <button id="start-button">Start Game</button>
         <p>Use the left and right arrow to control the car!</p>
-        <img src="./images/arrows.png" alt="" class="arrows-img" />
+
       </div>
 
       <div id="game-container">
-        <div>
+        
+        <!-- #game-screen is initially hidden using CSS style display: none -->
+        <div id="game-screen"></div>
+      </div>
+      <div>
           <h2>Stats</h2>
           <p>Score: <span id="score">0</span></p>
           <p>Lives: <span id="lives">3</span></p>
         </div>
-        <!-- #game-screen is initially hidden using CSS style display: none -->
-        <div id="game-screen"></div>
-      </div>
-
+      <img src="./images/arrows.png" class="arrows-img" alt="arrows"/>
+       
+        
       <!-- #game-end is initially hidden using CSS style display: none -->
-      <div id="game-end">
-        <img src="./images/logo.png" alt="" class="logo-img" />
+      <div id="game-end" style="display:none">
+        <img src="./images/logo.png" class="logo-img" alt="logo" />
         <h1>Game Over</h1>
-        <br />
+        <p>Score: <span id="final-score">0</span></p>
         <button id="restart-button">Restart</button>
       </div>
     </main>
 
-    <script type="text/javascript" src="js/game.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/obstacle.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/script.js"></script>
+
   </body>
 </html>

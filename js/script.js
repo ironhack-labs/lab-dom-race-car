@@ -3,6 +3,7 @@ window.onload = function () {
   const restartButton = document.getElementById("restart-button");
 
   startButton.addEventListener("click", function () {
+    const game = new Game("game-intro", "game-screen", "game-end");
     startGame();
   });
 
